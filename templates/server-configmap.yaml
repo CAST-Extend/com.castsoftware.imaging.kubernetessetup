@@ -1,0 +1,53 @@
+apiVersion: v1
+data:
+  app-config.json: "{\n\t\"transaction\": {\n\t\t\"business\": [\"efile\",\".net form\",\"angularjs
+    application\",\"ascx source file\",\"jsf \",\"sap transaction\",\"vb designer
+    files\",\"vb user control\",\"vb property page\",\"vb user document\",\"c# form\",\"pb
+    window\",\"delphi form\",\"vb form\",\"c# user control\",\"vb.net user control\",\"vb
+    mdi form\",\"oracle forms module\",\"ios ui control\",\"html5 source code\",\"html5
+    jsp content\",\"oracle report module\",\"html5 cshtml content\",\"jquery selector\",\"html5
+    aspx content\",\"asmx source file\",\"ios ui button\",\"jsf input field\",\"aspx
+    source file\"],\n\t\t\"batch\": [\"jcl job\",\"jcl job - legacy\",\"python main\"],\n\t\t\"api\":
+    [\"cics transaction\",\"cobol transaction\"]\n\t}\n}"
+  app.config: |
+    {
+        "PORT": "9000",
+        "NEO4J_USERNAME": "neo4j",
+        "NEO4J_PASSWORD": "imaging",
+        "NEO4J_BOLT_ENDPOINT": "neo4j.{{ .Release.Namespace }}.svc.cluster.local:7687",
+        "ETL_ENDPOINT": "etl.{{ .Release.Namespace }}.svc.cluster.local:9001",
+        "TOKEN": "D5ED6A406775FC71B8D2A978883E8ED4",
+        "NEO4J_IMPORT_PATH": "/opt/imaging/imaging-service/upload/",
+        "LOG_PATH": "/opt/imaging/imaging-service/logs/",
+        "LOG_LEVEL": "debug",
+        "APP_CONFIG": "app-config.json"
+    }
+  init.sh: |+
+    #!/bin/sh
+
+    cp -r /opt/imaging/config/login/* /opt/imaging/login/
+    cp /opt/imaging/config/sourcecode/* /opt/imaging/sourcecode/
+    cp /opt/imaging/config/nginx/conf/* /etc/nginx/
+    cp /opt/imaging/config/app-config.json /opt/imaging/imaging-service/
+    cp /opt/imaging/config/app.config /opt/imaging/imaging-service/
+    supervisord -c /etc/supervisor.conf
+
+  switchSecurityMode.bat: |-
+    @echo off
+    TITLE Delete User Roles
+
+    SET PATH=%PATH%;..\tools
+    curl -X POST -H "Content-type: application/json" http://neo4j:imaging@localhost:7474/db/data/transaction/commit -d "{\"statements\": [{\"statement\": \"MATCH (n:Role) DETACH DELETE n\"}]}"
+    if errorlevel 1 exit /b 1
+    exit /b 0
+  switchSecurityMode.sh: |
+    #!/bin/sh
+    # Run to delete user roles from database.
+
+    curl -X POST -H "Content-type: application/json" http://neo4j:imaging@localhost:7474/db/data/transaction/commit -d "{\"statements\": [{\"statement\": \"MATCH (n:Role) DETACH DELETE n\"}]}"
+    echo
+    echo "All users have been successfully deleted."
+kind: ConfigMap
+metadata:
+  name: serverconf
+  namespace: {{ .Release.Namespace }}

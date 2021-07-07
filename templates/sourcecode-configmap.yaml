@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  application.properties: |
+    server.port=9980
+    api.token=D5ED6A406775FC71B8D2A978883E8ED4
+    datasource.url=
+    datasource.username=
+    datasource.password=
+    datasource.alias=
+    logging.level.root=info
+    logging.level.com.castsoftware.aip.console.sourcecodeexplorer.service=debug
+    logging.path=/opt/imaging/imaging-service/logs
+    logging.file=${logging.path}/sourcecode.log
+    logging.file.max-size=5MB
+kind: ConfigMap
+metadata:
+  name: sourcecodeconf
+  namespace: {{ .Release.Namespace }}

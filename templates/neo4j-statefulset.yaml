@@ -1,0 +1,79 @@
+apiVersion: "apps/v1"
+kind: StatefulSet
+metadata:
+  name: neo4j-core
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: neo4j
+  replicas: {{ .Values.neo4jReplicaCount }}
+  selector:
+    matchLabels:
+      app: neo4j
+  template:
+    metadata:
+      labels:
+        app: neo4j
+        component: core
+    spec:
+      containers:
+        - name: neo4j
+          image: "{{ .Values.neo4jImage.name }}:{{ .Values.neo4jImage.tag| default .Values.version}}"
+          imagePullPolicy: "{{ .Values.neo4jImage.pullPolicy }}"
+          command:
+            - /bin/sh
+            - -c
+            - cp /opt/config/neo4j.conf /var/lib/neo4j/conf/;neo4j-admin set-initial-password imaging;neo4j console
+          env:
+            - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
+              value: "yes"
+          ports:
+            - containerPort: 7474
+              name: browser
+            - containerPort: 7687
+              name: bolt
+            - containerPort: 6362
+              name: backup
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: datadir
+              mountPath: "/var/lib/neo4j/data"
+            - name: importdir
+              mountPath: "/var/lib/neo4j/import"
+            - name: logdir
+              mountPath: "/log"
+            - name: conf
+              mountPath: "/opt/config"
+      volumes:
+        - name: conf
+          configMap:
+            name: neo4jconfig
+            defaultMode: 0777
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: "default"
+        resources:
+          requests:
+            storage: "5Gi"
+    - metadata:
+        name: importdir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: "default"
+        resources:
+          requests:
+            storage: "5Gi"
+    - metadata:
+        name: logdir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: "default"
+        resources:
+          requests:
+            storage: "1Gi"
