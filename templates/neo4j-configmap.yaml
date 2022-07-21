@@ -35,8 +35,8 @@ data:
     # calculated based on available system resources.
     # Uncomment these lines to set specific initial and maximum
     # heap size.
-    dbms.memory.heap.initial_size=3G
-    dbms.memory.heap.max_size=3G
+    dbms.memory.heap.initial_size=6G
+    dbms.memory.heap.max_size=6G
 
     # The amount of memory to use for mapping the store files, in bytes (or
     # kilobytes with the 'k' suffix, megabytes with 'm' and gigabytes with 'g').
@@ -329,7 +329,7 @@ data:
     #dbms.memory.pagecache.size=512M
 
     #dbms.tx_log.rotation.retention_policy=100M size
-    dbms.directories.plugins=/plugins
+    dbms.directories.plugins=/var/lib/neo4j/plugins
     dbms.directories.logs=/logs
     #causal_clustering.transaction_advertised_address=e040af5dd0f4:6000
     #causal_clustering.raft_advertised_address=e040af5dd0f4:7000

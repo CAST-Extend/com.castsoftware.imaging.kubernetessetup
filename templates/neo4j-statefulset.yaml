@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: neo4j
-          image: "{{ .Values.neo4jImage.name }}:{{ .Values.neo4jImage.tag| default .Values.version}}"
+          image: "{{ .Values.neo4jImage.name }}:{{ .Values.neo4jImage.tag}}"
           imagePullPolicy: "{{ .Values.neo4jImage.pullPolicy }}"
           command:
             - /bin/sh
@@ -55,25 +55,25 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "default"
+        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
-            storage: "5Gi"
+            storage: "15Gi"
     - metadata:
         name: importdir
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "default"
+        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
-            storage: "5Gi"
+            storage: "1Gi"
     - metadata:
         name: logdir
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "default"
+        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
             storage: "1Gi"

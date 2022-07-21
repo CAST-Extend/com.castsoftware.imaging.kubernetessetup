@@ -17,7 +17,7 @@ spec:
         app: server
     spec:
       containers:
-        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag | default .Values.version }}"
+        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag}}"
           imagePullPolicy: "{{ .Values.serviceImage.pullPolicy }}"
           command:
             - /bin/sh

@@ -10,7 +10,10 @@ data:
     \"NEO4J_ARCHIVE_PATH\": \"/opt/imaging/imaging-etl/upload/archive/\",\n
     \"NEO4J_IMPORT_BATCH_SIZE\":\"1000\", \n
     \"LOG_PATH\": \"/opt/imaging/imaging-etl/logs/\",\n
-    \"LOG_LEVEL\":\"debug\"\n
+    \"LOG_LEVEL\":\"debug\",\n
+    \"WEB_SERVICE_LINKER_PATH\": \"/opt/imaging/imaging-etl/web-service-linker/\",\n
+    \"ETL_AUTOMATION_BINARY_PATH\": \"/opt/imaging/imaging-etl/automation_scripts\",\n
+    \"HTTP_ENTPOINT\":\"server.{{ .Release.Namespace }}.svc.cluster.local:8084\"\n
     }\n"
 kind: ConfigMap
 metadata:

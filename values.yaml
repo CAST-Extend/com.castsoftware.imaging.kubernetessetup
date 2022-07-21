@@ -1,24 +1,24 @@
 # Default values for imaging-system.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-version: 2.4.0
+version: 2.11.0
 neo4jReplicaCount: 1
 serverReplicaCount: 1
 etlReplicaCount: 1
 
 neo4jImage:
   name: castimaging/imagingneo4j
-  tag:
+  tag: 2.11.0
   pullPolicy: IfNotPresent
 
 serviceImage:
   name: castimaging/imagingservice
-  tag:
+  tag: 2.11.0
   pullPolicy: IfNotPresent
 
 etlImage:
   name: castimaging/imagingetl
-  tag:
+  tag: 2.11.0
   pullPolicy: IfNotPresent
 
 etlservice:
@@ -27,11 +27,11 @@ etlservice:
 
 neo4jresources:
   limits:
-    cpu: 3
-    memory: 4G
+    cpu: 4
+    memory: 6G
   requests:
-    cpu: 3
-    memory: 3G
+    cpu: 4
+    memory: 6G
 serviceresources:
   limits:
     cpu: 2500m
@@ -46,3 +46,6 @@ etlresources:
   requests:
     cpu: 100m
     memory: 128Mi
+
+storageClassName:
+  name: default

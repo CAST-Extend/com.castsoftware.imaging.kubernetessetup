@@ -17,7 +17,7 @@ spec:
         app: etl
     spec:
       containers:
-        - image: "{{ .Values.etlImage.name }}:{{ .Values.etlImage.tag| default .Values.version}}"
+        - image: "{{ .Values.etlImage.name }}:{{ .Values.etlImage.tag}}"
           imagePullPolicy: "{{ .Values.etlImage.pullPolicy }}"
           command:
             - /bin/sh

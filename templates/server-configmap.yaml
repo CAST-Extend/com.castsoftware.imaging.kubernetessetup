@@ -32,21 +32,6 @@ data:
     cp /opt/imaging/config/app.config /opt/imaging/imaging-service/
     supervisord -c /etc/supervisor.conf
 
-  switchSecurityMode.bat: |-
-    @echo off
-    TITLE Delete User Roles
-
-    SET PATH=%PATH%;..\tools
-    curl -X POST -H "Content-type: application/json" http://neo4j:imaging@localhost:7474/db/data/transaction/commit -d "{\"statements\": [{\"statement\": \"MATCH (n:Role) DETACH DELETE n\"}]}"
-    if errorlevel 1 exit /b 1
-    exit /b 0
-  switchSecurityMode.sh: |
-    #!/bin/sh
-    # Run to delete user roles from database.
-
-    curl -X POST -H "Content-type: application/json" http://neo4j:imaging@localhost:7474/db/data/transaction/commit -d "{\"statements\": [{\"statement\": \"MATCH (n:Role) DETACH DELETE n\"}]}"
-    echo
-    echo "All users have been successfully deleted."
 kind: ConfigMap
 metadata:
   name: serverconf

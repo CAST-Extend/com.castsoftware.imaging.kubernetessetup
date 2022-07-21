@@ -473,6 +473,8 @@ data:
     6;\t\n        gzip_buffers 16 8k;\t\n        gzip_http_version 1.1; \t\n\n        root
     /opt/imaging/web/dist;\n        index index.html;\n\n        location ~ ^/imaging(.*)
     {\n            index index.html;\n            try_files $1 $1/ /index.html;\n
+     location ~ ^/imaging(.*) {\n index index.html; try_files $1 $1/ /index.html;\n
+    \    }\n
     \       }\n\n        # Proxying the connections\n        location ^~ /imaging/login/api/
     {\n            limit_req zone=default burst=6 nodelay;\n            proxy_pass
     \        http://localhost:8084/;\n        }\n\n        location ^~ /imaging/saml/
