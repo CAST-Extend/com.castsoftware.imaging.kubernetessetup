@@ -13,7 +13,7 @@ data:
     \"LOG_LEVEL\":\"debug\",\n
     \"WEB_SERVICE_LINKER_PATH\": \"/opt/imaging/imaging-etl/web-service-linker/\",\n
     \"ETL_AUTOMATION_BINARY_PATH\": \"/opt/imaging/imaging-etl/automation_scripts\",\n
-    \"HTTP_ENTPOINT\":\"server.{{ .Release.Namespace }}.svc.cluster.local:8084\"\n
+    \"HTTP_ENDPOINT\":\"server.{{ .Release.Namespace }}.svc.cluster.local:8084\"\n
     }\n"
 kind: ConfigMap
 metadata:
