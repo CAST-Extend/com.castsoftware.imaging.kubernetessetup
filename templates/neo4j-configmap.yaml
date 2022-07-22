@@ -325,6 +325,7 @@ data:
     metrics.enabled=false
 
     dbms.default_listen_address=0.0.0.0
+    cypher.lenient_create_relationship=true
 
     #dbms.memory.pagecache.size=512M
 
