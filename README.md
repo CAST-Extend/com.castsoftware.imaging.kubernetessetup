@@ -45,6 +45,7 @@ kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 
 
 
 # Below command will copy the some default files into neo4j data dirctory which will be needed for import an applicaiton
-kubectl cp tools/csv/* neo4j-core-0:/var/lib/neo4j/import -n imaging
+kubectl cp techtreeContainer.csv neo4j-core-0:/var/lib/neo4j/import -n imaging
+kubectl cp techColor.csv neo4j-core-0:/var/lib/neo4j/import -n imaging
 ```
 

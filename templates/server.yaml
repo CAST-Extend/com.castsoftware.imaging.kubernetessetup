@@ -16,6 +16,10 @@ spec:
       labels:
         app: server
     spec:
+      initContainers:
+        - name: neo4jhealthcheck
+          image: busybox:latest
+          command: ['sh', '-c', "until wget --no-verbose --spider http://neo4j.{{ .Release.Namespace }}.svc.cluster.local:7474; do echo waiting for neo4j; sleep 2; done"]     
       containers:
         - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag}}"
           imagePullPolicy: "{{ .Values.serviceImage.pullPolicy }}"

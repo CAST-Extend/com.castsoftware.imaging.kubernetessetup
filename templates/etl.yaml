@@ -16,13 +16,17 @@ spec:
       labels:
         app: etl
     spec:
+      initContainers:
+        - name: neo4jhealthcheck
+          image: busybox:latest
+          command: ['sh', '-c', "until wget --no-verbose --spider http://neo4j.{{ .Release.Namespace }}.svc.cluster.local:7474; do echo waiting for neo4j; sleep 2; done"]
       containers:
         - image: "{{ .Values.etlImage.name }}:{{ .Values.etlImage.tag}}"
           imagePullPolicy: "{{ .Values.etlImage.pullPolicy }}"
           command:
             - /bin/sh
             - -c
-            - /opt/imaging/imaging-etl/imagingetl -CONFIG /opt/imaging/imaging-etl/config/app.config
+            - cp /opt/imaging/imaging-etl/upload/defaultcsvs/*.csv /opt/imaging/imaging-etl/upload;/opt/imaging/imaging-etl/imagingetl -CONFIG /opt/imaging/imaging-etl/config/app.config
           name: etl
           ports:
             - containerPort: 9001
@@ -50,10 +54,33 @@ spec:
             - name: logdir
               mountPath: /opt/imaging/imaging-etl/logs
               readOnly: false
+            - name: defaultcsvs
+              mountPath: /opt/imaging/imaging-etl/upload/defaultcsvs
+              readOnly: false
       volumes:
         - name: config
           configMap:
             name: etlconf
+        - name: defaultcsvs
+          configMap:
+            name: defaultcsvs
+            items:
+            - key: "catCat.csv"
+              path: "catCat.csv"
+            - key: "font.csv"
+              path: "font.csv"
+            - key: "objectTypeColors.csv"
+              path: "objectTypeColors.csv"    
+            - key: "propCat.csv"
+              path: "propCat.csv"
+            - key: "typTechno.csv"
+              path: "typTechno.csv"
+            - key: "values.csv"
+              path: "values.csv"
+            - key: "typConcept.csv"
+              path: "typConcept.csv" 
+            - key: "typ.csv"
+              path: "typ.csv"
         - name: datadir
           persistentVolumeClaim:
             claimName: importdir-neo4j-core-0
