@@ -31,7 +31,7 @@ data:
     over LDAP(S) with basic Active Directory instances (simplified mode)\n#  - saml
     -> Set this configuration for SSO authentication using SAML\nsecurity.mode=local\n
     spring.datasource.url=jdbc:h2:file:./db/loginservice;AUTO_SERVER=TRUE\n
-    spring.datasource.username=\n
+    spring.datasource.username=sa\n
     spring.datasource.password=\n
     spring.datasource.driver-class-name=org.h2.Driver\n
     spring.jpa.database-platform=org.hibernate.dialect.H2Dialect\n
@@ -106,4 +106,4 @@ data:
 kind: ConfigMap
 metadata:
   name: loginconf
-  namespace: {{ .Release.Namespace }}
+  namespace: { { .Release.Namespace } }

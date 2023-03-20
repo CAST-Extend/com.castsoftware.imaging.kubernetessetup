@@ -2,10 +2,10 @@ apiVersion: "apps/v1"
 kind: StatefulSet
 metadata:
   name: neo4j-core
-  namespace: {{ .Release.Namespace }}
+  namespace: { { .Release.Namespace } }
 spec:
   serviceName: neo4j
-  replicas: {{ .Values.neo4jReplicaCount }}
+  replicas: { { .Values.neo4jReplicaCount } }
   selector:
     matchLabels:
       app: neo4j
@@ -22,7 +22,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - cp /opt/config/neo4j.conf /var/lib/neo4j/conf/;neo4j-admin set-initial-password imaging;neo4j console
+            - cp /opt/config/neo4j.conf /var/lib/neo4j/conf/;unzip -nq /var/lib/neo4j/plugins/packagereference.zip -d /var/lib/neo4j/import;neo4j-admin restore --verbose --from=/var/lib/neo4j/import/packagereference --database=packagereference --force --move;neo4j-admin set-initial-password imaging;neo4j console
           env:
             - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
               value: "yes"
@@ -55,7 +55,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
             storage: "15Gi"
@@ -64,7 +63,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
             storage: "1Gi"
@@ -73,7 +71,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: "{{ .Values.storageClassName.name }}"
         resources:
           requests:
             storage: "1Gi"

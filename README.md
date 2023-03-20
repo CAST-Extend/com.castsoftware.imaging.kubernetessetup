@@ -20,10 +20,16 @@ kubectl create ns imaging
 
 ```
 
+Below command will create config map for all the required csv files
+
+```
+kubectl create configmap defaultcsvs --from-file=tools/csv -n imaging
+```
+
 Run below helm commands to install imaging
 
 ```
-helm install imaging --namespace imaging --set version=2.11.0 .
+helm install imaging --namespace imaging --set version=2.16.0-beta3 .
 
 
 #Update service image
@@ -44,8 +50,4 @@ kubectl get svc -n imaging
 kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
 
 
-# Below command will copy the some default files into neo4j data dirctory which will be needed for import an applicaiton
-kubectl cp techtreeContainer.csv neo4j-core-0:/var/lib/neo4j/import -n imaging
-kubectl cp techColor.csv neo4j-core-0:/var/lib/neo4j/import -n imaging
 ```
-

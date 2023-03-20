@@ -16,6 +16,8 @@ spec:
       labels:
         app: server
     spec:
+      securityContext:
+          runAsUser: 0
       initContainers:
         - name: neo4jhealthcheck
           image: busybox:latest
