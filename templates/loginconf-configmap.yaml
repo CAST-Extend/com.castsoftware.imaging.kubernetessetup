@@ -106,4 +106,4 @@ data:
 kind: ConfigMap
 metadata:
   name: loginconf
-  namespace: { { .Release.Namespace } }
+  namespace: {{.Release.Namespace}}

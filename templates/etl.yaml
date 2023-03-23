@@ -83,6 +83,14 @@ spec:
               path: "typConcept.csv" 
             - key: "typ.csv"
               path: "typ.csv"
+            - key: "move2cloud.csv"
+              path: "move2cloud.csv"
+            - key: "techColor.csv"
+              path: "techColor.csv"
+            - key: "techtreeContainer.csv"
+              path: "techTreeContainer.csv"
+            - key: "typCat.csv"
+              path: "typCat.csv"
         - name: datadir
           persistentVolumeClaim:
             claimName: importdir-neo4j-core-0

@@ -2,10 +2,10 @@ apiVersion: "apps/v1"
 kind: StatefulSet
 metadata:
   name: neo4j-core
-  namespace: { { .Release.Namespace } }
+  namespace: {{.Release.Namespace}}
 spec:
   serviceName: neo4j
-  replicas: { { .Values.neo4jReplicaCount } }
+  replicas: {{.Values.neo4jReplicaCount}}
   selector:
     matchLabels:
       app: neo4j
@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: neo4j
-          image: "{{ .Values.neo4jImage.name }}:{{ .Values.neo4jImage.tag}}"
-          imagePullPolicy: "{{ .Values.neo4jImage.pullPolicy }}"
+          image: "{{.Values.neo4jImage.name}}:{{.Values.neo4jImage.tag}}"
+          imagePullPolicy: "{{.Values.neo4jImage.pullPolicy}}"
           command:
             - /bin/sh
             - -c

@@ -1,10 +1,11 @@
 apiVersion: v1
 data:
-  application-security-ad.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
+  application-security-ad.xml:
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
     xmlns=\"http://www.springframework.org/schema/security\"\n             xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
     \            xmlns:beans=\"http://www.springframework.org/schema/beans\"\n             xsi:schemaLocation=\"\n\t\thttp://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd\n\t\thttp://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-4.2.xsd\">\n\n
+    http://www.springframework.org/schema/beans/spring-beans.xsd\n\t\thttp://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd\">\n\n
     \   <authentication-manager>\n        <authentication-provider ref=\"adLdapAuthenticationProvider\"/>\n
     \   </authentication-manager>\n\n    <beans:bean id=\"adLdapAuthenticationProvider\"\n
     \               class=\"org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider\">\n
@@ -12,11 +13,12 @@ data:
     value=\"${security.ad.url}\"/>\n        <beans:property name=\"useAuthenticationRequestCredentials\"
     value=\"true\"/>\n        <beans:property name=\"convertSubErrorCodesToExceptions\"
     value=\"true\"/>\n    </beans:bean>\n\n</beans:beans>"
-  application-security-ldap.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
+  application-security-ldap.xml:
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
     xmlns=\"http://www.springframework.org/schema/security\"\n             xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
     \            xmlns:beans=\"http://www.springframework.org/schema/beans\"\n             xsi:schemaLocation=\"\n\t\thttp://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd\n\t\thttp://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-4.2.xsd\">\n\n
+    http://www.springframework.org/schema/beans/spring-beans.xsd\n\t\thttp://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd\">\n\n
     \   <authentication-manager>\n        <authentication-provider ref=\"ldapAuthenticationProvider\"/>\n
     \   </authentication-manager>\n\n    <beans:bean id=\"ldapServer\"\n                class=\"org.springframework.security.ldap.DefaultSpringSecurityContextSource\">\n
     \       <beans:constructor-arg value=\"${security.ldap.url}\"/>\n        <beans:property
@@ -40,20 +42,22 @@ data:
     name=\"searchSubtree\" value=\"true\"/>\n                <beans:property name=\"convertToUpperCase\"
     value=\"false\"/>\n                <beans:property name=\"rolePrefix\" value=\"\"/>\n
     \           </beans:bean>\n        </beans:constructor-arg>\n    </beans:bean>\n</beans:beans>"
-  application-security-local.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
+  application-security-local.xml:
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans:beans
     xmlns=\"http://www.springframework.org/schema/security\"\n             xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
     \            xmlns:beans=\"http://www.springframework.org/schema/beans\"\n             xsi:schemaLocation=\"\n\t\thttp://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd\n\t\thttp://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-4.2.xsd\">\n\n
+    http://www.springframework.org/schema/beans/spring-beans.xsd\n\t\thttp://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd\">\n\n
     \   <authentication-manager>\n        <authentication-provider>\n            <user-service>\n
     \               <user name=\"cast\" password=\"{noop}cast\" authorities=\"\"/>\n
     \               <user name=\"admin\" password=\"{noop}admin\" authorities=\"\"/>\n
     \           </user-service>\n        </authentication-provider>\n    </authentication-manager>\n\n</beans:beans>"
-  application-security-saml.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans
+  application-security-saml.xml:
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<beans
     xmlns=\"http://www.springframework.org/schema/beans\"\n       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
     \      xmlns:security=\"http://www.springframework.org/schema/security\"\n       xmlns:context=\"http://www.springframework.org/schema/context\"\n
-    \      xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd\n\t\thttp://www.springframework.org/schema/security
-    http://www.springframework.org/schema/security/spring-security-4.2.xsd\n\t\thttp://www.springframework.org/schema/context
+    \      xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd\n\t\thttp://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd\n\t\thttp://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd\">\n\n    <!--
     Enable anootation scan in the saml extension -->\n    <context:annotation-config
     />\n    <context:component-scan base-package=\"org.springframework.security.saml\"/>\n\n
@@ -210,4 +214,4 @@ data:
 kind: ConfigMap
 metadata:
   name: loginsecurityconf
-  namespace: {{ .Release.Namespace }}
+  namespace: {{.Release.Namespace}}
