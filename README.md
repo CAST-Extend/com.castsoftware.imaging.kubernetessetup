@@ -29,7 +29,7 @@ kubectl create configmap defaultcsvs --from-file=tools/csv -n imaging
 Run below helm commands to install imaging
 
 ```
-helm install imaging --namespace imaging --set version=2.16.0-beta3 .
+helm install imaging --namespace imaging --set version=2.16.0-beta4 .
 
 
 #Update service image
