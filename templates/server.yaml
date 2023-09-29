@@ -16,8 +16,14 @@ spec:
       labels:
         app: server
     spec:
+      securityContext:
+          runAsUser: 0
+      initContainers:
+        - name: neo4jhealthcheck
+          image: busybox:latest
+          command: ['sh', '-c', "until wget --no-verbose --spider http://neo4j.{{ .Release.Namespace }}.svc.cluster.local:7474; do echo waiting for neo4j; sleep 2; done"]     
       containers:
-        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag | default .Values.version }}"
+        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag}}"
           imagePullPolicy: "{{ .Values.serviceImage.pullPolicy }}"
           command:
             - /bin/sh
@@ -42,13 +48,13 @@ spec:
             httpGet:
               path: /healthcheck
               port: 9000
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
             periodSeconds: 15
           livenessProbe:
             httpGet:
               path: /healthcheck
               port: 9000
-            initialDelaySeconds: 3
+            initialDelaySeconds: 30
             periodSeconds: 15
           resources:
             {{- toYaml .Values.serviceresources | nindent 12 }}
