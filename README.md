@@ -42,7 +42,7 @@ helm install imaging --namespace imaging --set version=2.18.0-beta2 .
 
 # In case this error occurs:
 #       Error: INSTALLATION FAILED: create: failed to create: Secret "sh.helm.release.v1.imaging.v1" is invalid: data: Too long: must have at most 1048576 bytes
-# ... delete the .git folder and try again
+# => delete the .git folder and try again
 
 # Get imaging pods and services status in kubernetes 
 kubectl get pods -n imaging
