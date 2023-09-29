@@ -44,23 +44,23 @@ helm install imaging --namespace imaging --set version=2.18.0-beta2 .
 #       Error: INSTALLATION FAILED: create: failed to create: Secret "sh.helm.release.v1.imaging.v1" is invalid: data: Too long: must have at most 1048576 bytes
 # ... delete the .git folder and try again
 
-#Get imaging pods and services status in kubernetes 
+# Get imaging pods and services status in kubernetes 
 kubectl get pods -n imaging
 kubectl get svc -n imaging
 
-#Once neo4j pod status is Running, copy required csv files into neo4j data directory using provided shell script
+# Once neo4j pod status is Running, copy required csv files into neo4j data directory using provided shell script
 ./CopyNoe4jFiles.sh 
 
 # Expose the deployment to access from outside
 kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
 
-#Update service image
+# Update service image
 helm upgrade imaging --namespace imaging --set serviceImage.tag=<some-version>  .
 
-#Update etl image
+# Update etl image
 helm upgrade imaging --namespace imaging --set etlImage.tag=<some-version> .
 
-#Update neo4j image
+# Update neo4j image
 helm upgrade imaging --namespace imaging --set neo4jImage.tag=<some-version> .
 
 ```
