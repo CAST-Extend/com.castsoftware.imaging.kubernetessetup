@@ -21,7 +21,8 @@ kubectl create ns imaging
 
 Create required Permanent Volumes and Permanent Volumes Claims 
 ```
-# Create Permanent Volumes (adjust paths and node name in nodeAffinity section in each pv-*.yaml file)
+# Create Permanent Volumes:
+# -> adjust volumes phhysical path and node name in nodeAffinity section in each pv-*.yaml file (replace <mynodename> with actual node name to which Imaging will be bound)
 cd ./img-cluster-config
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
