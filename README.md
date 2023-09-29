@@ -19,10 +19,36 @@ kubectl create ns imaging
 
 ```
 
+Create required Permanent Volumes and Permanent Volumes Claims 
+```
+# Create Permanent Volumes (adjust node name in nodeAffinity section in each pv-*.yaml file)
+cd ./img-cluster-config
+kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
+
+# Check pv status:
+kubectl get pv -n imaging
+
+# Create Permanent Volumes Claims
+cd ./img-cluster-config
+kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yaml -f pvc-logdir-neo4j-core-0.yaml
+
+# Check pvc status:
+kubectl get pvc -n imaging
+```
+
 Run below helm commands to install imaging
 ```
-helm install imaging --namespace imaging --set version=2.5.0 .
+helm install imaging --namespace imaging --set version=2.18.0-beta2 .
 
+#Get imaging pods and services status in kubernetes 
+kubectl get pods -n imaging
+kubectl get svc -n imaging
+
+#Once neo4j pod status is Running, copy required csv files into neo4j data directory using provided shell script
+./CopyNoe4jFiles.sh 
+
+# Expose the deployment to access from outside
+kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
 
 #Update service image
 helm upgrade imaging --namespace imaging --set serviceImage.tag=<some-version>  .
@@ -33,15 +59,4 @@ helm upgrade imaging --namespace imaging --set etlImage.tag=<some-version> .
 #Update neo4j image
 helm upgrade imaging --namespace imaging --set neo4jImage.tag=<some-version> .
 
-#Get pods and service in kubernetes 
-kubectl get pods -n imaging
-
-kubectl get svc -n imaging
-
-# expose the deployment to access from outside
-kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
-
-
-# Below command will copy the some default files into neo4j data dirctory which will be needed for import an applicaiton
-k cp tools/csv/* neo4j-core-0:/var/lib/neo4j/import -n imaging
 ```
