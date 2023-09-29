@@ -55,14 +55,4 @@ kubectl get svc -n imaging
 
 # Expose the deployment to access from outside
 kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
-
-# Update service image
-helm upgrade imaging --namespace imaging --set serviceImage.tag=<some-version>  .
-
-# Update etl image
-helm upgrade imaging --namespace imaging --set etlImage.tag=<some-version> .
-
-# Update neo4j image
-helm upgrade imaging --namespace imaging --set neo4jImage.tag=<some-version> .
-
 ```
