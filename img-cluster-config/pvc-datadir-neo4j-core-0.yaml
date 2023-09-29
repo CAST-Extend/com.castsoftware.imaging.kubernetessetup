@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: datadir-neo4j-core-0
+  namespace: imaging
+spec:
+  volumeName: pv-datadir
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests: 
+      storage: 16Gi
+
