@@ -50,7 +50,7 @@ kubectl get pods -n imaging
 
 # Once the status of the neo4j pod is "Running", run the shell script to copy the csv files:
 
-./CopyNoe4jFiles.sh 
+./CopyCsvFiles.sh 
 
 # Expose the deployment to access from outside:
 
