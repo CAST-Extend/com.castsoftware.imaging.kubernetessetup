@@ -24,15 +24,19 @@ Create required Permanent Volumes and Permanent Volumes Claims
 # Create Permanent Volumes:
 # -> before proceeding, edit each pv-*.yaml file in img-cluster-config folder
 #    to adjust volumes physical path and node name in the nodeAffinity section
+
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
 # Check pv status:
+
 kubectl get pv -n imaging
 
 # Create Permanent Volumes Claims:
+
 kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yaml -f pvc-logdir-neo4j-core-0.yaml
 
 # Check pvc status:
+
 kubectl get pvc -n imaging
 ```
 
@@ -41,11 +45,14 @@ Run below helm commands to install imaging
 helm install imaging --namespace imaging --set version=2.18.0-beta2 .
 
 # Get imaging pods status in kubernetes:
+
 kubectl get pods -n imaging
 
 # Once the status of the neo4j pod is "Running", run the shell script to copy the csv files:
+
 ./CopyNoe4jFiles.sh 
 
 # Expose the deployment to access from outside:
+
 kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
 ```
