@@ -19,11 +19,13 @@ kubectl create ns imaging
 
 ```
 
-Create required Permanent Volumes and Permanent Volumes Claims 
+Create Permanent Volumes and Permanent Volumes Claims 
 ```
 # Create Permanent Volumes:
-# -> before proceeding, edit each pv-*.yaml file in img-cluster-config folder
-#    to adjust volumes physical path and node name in the nodeAffinity section
+# A sample implementation based on "local" Persistent Volume type is provided
+# in img-cluster-config folder.
+# To use it, edit each pv-*.yaml file to adjust the physical path as well as
+# the node name in the nodeAffinity section
 
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
