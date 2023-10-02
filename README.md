@@ -22,16 +22,14 @@ kubectl create ns imaging
 Create required Permanent Volumes and Permanent Volumes Claims 
 ```
 # Create Permanent Volumes:
-# -> adjust volumes phhysical path and node name in nodeAffinity section in each pv-*.yaml file
-# (replace <mynodename> with actual node name to which Imaging will be bound)
-cd ./img-cluster-config
+# -> before proceeding, edit each pv-*.yaml file in img-cluster-config folder
+#    to adjust volumes physical path and node name in the nodeAffinity section
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
 # Check pv status:
 kubectl get pv -n imaging
 
-# Create Permanent Volumes Claims
-cd ./img-cluster-config
+# Create Permanent Volumes Claims:
 kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yaml -f pvc-logdir-neo4j-core-0.yaml
 
 # Check pvc status:
@@ -42,17 +40,12 @@ Run below helm commands to install imaging
 ```
 helm install imaging --namespace imaging --set version=2.18.0-beta2 .
 
-# In case this error occurs:
-#       Error: INSTALLATION FAILED: create: failed to create: Secret "sh.helm.release.v1.imaging.v1" is invalid: data: Too long: must have at most 1048576 bytes
-# => delete the .git folder and try again
-
-# Get imaging pods and services status in kubernetes 
+# Get imaging pods status in kubernetes:
 kubectl get pods -n imaging
-kubectl get svc -n imaging
 
-# Once neo4j pod status is Running, copy required csv files into neo4j data directory using provided shell script
+# Once the status of the neo4j pod is "Running", run the shell script to copy the csv files:
 ./CopyNoe4jFiles.sh 
 
-# Expose the deployment to access from outside
+# Expose the deployment to access from outside:
 kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
 ```
