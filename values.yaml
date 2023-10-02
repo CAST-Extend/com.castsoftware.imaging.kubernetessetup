@@ -1,9 +1,7 @@
 # Default values for imaging-system.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-# 2.18.0-beta2
-# 2.18.0-beta1
-# 2.18.0-beta2
+
 version: 2.18.0-beta2
 neo4jReplicaCount: 1
 serverReplicaCount: 1
