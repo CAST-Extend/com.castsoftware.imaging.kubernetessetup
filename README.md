@@ -53,7 +53,5 @@ kubectl get pods -n imaging
 
 ./CopyCsvFiles.sh 
 
-# Expose the deployment to access from outside:
-
-kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
+# Access Imaging: http://mynodename:30080
 ```
