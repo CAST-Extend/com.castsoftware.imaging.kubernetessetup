@@ -23,8 +23,8 @@ Create Permanent Volumes and Permanent Volumes Claims
 ```
 # Create Permanent Volumes:
 # - A sample implementation based on "local" Persistent Volume type is provided in the img-cluster-config folder.
-#   Before using it, edit each pv-*.yaml file to adjust the physical path as well as the node name in the
-#   nodeAffinity section (replace <mynodename> with actual node host name on which Imaging has to run)
+#   Before using it, edit each pv-*.yaml file to set the physical path as well as the node name in the
+#   nodeAffinity section (replace <mynodename> with actual node name on which you want to run Imaging)
 
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
@@ -53,5 +53,5 @@ kubectl get pods -n imaging
 
 ./CopyCsvFiles.sh 
 
-# Once all pods are "Running", access Imaging on http://<mynodename>:30080
+# Once all pods are "Running", access Imaging on http://mynodename:30080
 ```
