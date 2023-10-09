@@ -43,7 +43,7 @@ kubectl get pvc -n imaging
 
 Run below helm commands to install imaging
 ```
-helm install imaging --namespace imaging --set version=2.18.0-beta2 .
+helm install imaging --namespace imaging --set version=2.18.0 .
 
 # Get imaging pods status in kubernetes:
 
