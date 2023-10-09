@@ -28,15 +28,15 @@ Create Permanent Volumes and Permanent Volumes Claims
 
 kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
 
-# Check pv status:
+# Check pv status (should be "bound"):
 
-kubectl get pv -n imaging
+kubectl get pv
 
 # Create Permanent Volumes Claims:
 
 kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yaml -f pvc-logdir-neo4j-core-0.yaml
 
-# Check pvc status:
+# Check pvc status (should be "bound"):
 
 kubectl get pvc -n imaging
 ```
