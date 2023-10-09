@@ -41,7 +41,7 @@ kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yam
 kubectl get pvc -n imaging
 ```
 
-Run below helm commands to install imaging
+Run below helm commands to install imaging (from root folder)
 ```
 helm install imaging --namespace imaging --set version=2.18.0 .
 
