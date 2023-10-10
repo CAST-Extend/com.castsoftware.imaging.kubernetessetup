@@ -19,7 +19,7 @@ kubectl create ns imaging
 
 ```
 
-Create Permanent Volumes and Permanent Volumes Claims 
+Create Permanent Volumes to be used by Imaging
 ```
 # Create Permanent Volumes:
 #   A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
