@@ -47,5 +47,5 @@ kubectl get pods -n imaging
 
 ./CopyCsvFiles.sh 
 
-# Once all pods are "Running", access Imaging on http://imaging-host:30080
+# Once all pods are "Running", access Imaging on http://<imaging-host>:30080
 ```
