@@ -27,7 +27,7 @@ Create Imaging storage
 #  -> adjust the physical path of each Persistent Volume to match local folders on <imaging-host>
 # Apply the configuration:
 
-kubectl ClusterStorage-local.yaml
+kubectl apply -f ClusterStorage-local.yaml
 
 # Check pv status:
 
