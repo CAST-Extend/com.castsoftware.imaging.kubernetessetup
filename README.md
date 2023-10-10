@@ -29,7 +29,7 @@ Create Imaging storage
 
 kubectl apply -f ClusterStorage-local.yaml
 
-# Check pv status:
+# Check Persistent Volumes status:
 
 kubectl get pv
 
