@@ -25,7 +25,7 @@ Create Imaging storage
 # Before using it, edit the file to:
 #  -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> for each Persistent Volume)
 #  -> adjust the physical path of each Persistent Volume to match local folders on <imaging-host>
-# Finally, apply the configuration:
+# Apply the configuration:
 
 kubectl ClusterStorage-local.yaml
 
