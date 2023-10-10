@@ -21,7 +21,6 @@ kubectl create ns imaging
 
 Create Permanent Volumes to be used by Imaging
 ```
-# Create Permanent Volumes:
 #   A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
 #   Before using it, edit the file to:
 #   -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> on each Persistent Volume)
@@ -36,7 +35,7 @@ kubectl get pv
 
 ```
 
-Run below helm commands to install imaging
+Run below helm command to install imaging
 ```
 helm install imaging --namespace imaging --set version=2.18.0 .
 
