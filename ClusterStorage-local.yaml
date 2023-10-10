@@ -9,7 +9,7 @@ reclaimPolicy: Retain
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-datadir
+  name: pv-imaging-datadir
 spec:
   capacity:
     storage: 16Gi
@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-importdir
+  name: pv-imaging-importdir
 spec:
   capacity:
     storage: 2Gi
@@ -61,7 +61,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-logdir
+  name: pv-imaging-logdir
 spec:
   capacity:
     storage: 2Gi
