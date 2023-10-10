@@ -30,7 +30,7 @@ Create Permanent Volumes and Permanent Volumes Claims
 
 kubectl ClusterStorage-local.yaml
 
-# Check pv status (should be "Available"):
+# Check pv status:
 
 kubectl get pv
 
