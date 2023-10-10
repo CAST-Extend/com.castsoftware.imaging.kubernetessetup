@@ -22,10 +22,6 @@ etlImage:
   tag: 2.18.0
   pullPolicy: IfNotPresent
 
-etlservice:
-  type: NodePort
-  port: 9001
-
 serverservice:
   type: NodePort
   port: 30080
