@@ -43,7 +43,7 @@ helm install imaging --namespace imaging --set version=2.18.0 .
 
 kubectl get pods -n imaging
 
-# Wait until neo4j's pod status is "Running" and run below shell script:
+# Once neo4j's pod status is "Running", run below shell script:
 
 ./CopyCsvFiles.sh 
 
