@@ -23,7 +23,7 @@ Create Imaging storage
 ```
 # A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
 # Before using it, edit the file to:
-#  -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> on each Persistent Volume)
+#  -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> for each Persistent Volume)
 #  -> adjust the physical path of each Persistent Volume to match local folders on selected host
 # Finally, apply the configuration:
 
