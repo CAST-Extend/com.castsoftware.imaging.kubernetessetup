@@ -22,23 +22,18 @@ kubectl create ns imaging
 Create Permanent Volumes and Permanent Volumes Claims 
 ```
 # Create Permanent Volumes:
-#   A sample implementation based on local Persistent Volumes is provided in the img-cluster-config folder.
-#   Before using it, edit each pv-*.yaml file to adjust the physical path and to set the host name of the node
-#   on which you have decided to run Imaging (replace <mynodehostname> with the actual hostname of that node)
+#   A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
+#   Before using it, edit the file to:
+#   -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> on each Persistent Volume)
+#   -> adjust the physical path of each Persistent Volume to match your local folders
+# Then apply the configuration:
 
-kubectl apply -f pv-datadir.yaml -f pv-importdir.yaml -f pv-logdir.yaml
+kubectl ClusterStorage-local.yaml
 
-# Check pv status (should be "bound"):
+# Check pv status (should be "Available"):
 
 kubectl get pv
 
-# Create Permanent Volumes Claims:
-
-kubectl apply -f pvc-datadir-neo4j-core-0.yaml -f pvc-importdir-neo4j-core-0.yaml -f pvc-logdir-neo4j-core-0.yaml
-
-# Check pvc status (should be "bound"):
-
-kubectl get pvc -n imaging
 ```
 
 Run below helm commands to install imaging (from root folder)
