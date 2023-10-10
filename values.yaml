@@ -26,6 +26,10 @@ etlservice:
   type: NodePort
   port: 9001
 
+serverservice:
+  type: NodePort
+  port: 30080
+
 neo4jresources:
   limits:
     cpu: 4
