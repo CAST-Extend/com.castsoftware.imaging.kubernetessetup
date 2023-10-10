@@ -25,7 +25,7 @@ Create Permanent Volumes and Permanent Volumes Claims
 #   A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
 #   Before using it, edit the file to:
 #   -> specify the host name of the node on which you want to run Imaging (replace <imaging-host> on each Persistent Volume)
-#   -> adjust the physical path of each Persistent Volume to match your local folders
+#   -> adjust the physical path of each Persistent Volume to match local folders
 # Then apply the configuration:
 
 kubectl ClusterStorage-local.yaml
