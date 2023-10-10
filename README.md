@@ -36,7 +36,7 @@ kubectl get pv
 
 ```
 
-Run below helm commands to install imaging (from root folder)
+Run below helm commands to install imaging
 ```
 helm install imaging --namespace imaging --set version=2.18.0 .
 
