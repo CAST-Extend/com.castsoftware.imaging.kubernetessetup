@@ -30,7 +30,7 @@ Create Imaging storage
 #                 that is suitable for you.
 # Edit this file before applying it:
 #  -> specify the host name of the node on which the local Persistent Volumes will be created
-#     (replace <imaging-host> in each 3 Persistent Volume spec)
+#     (replace <imaging-host> in each 3 Persistent Volume specification)
 #  -> adjust the physical path of each Persistent Volume to match local folders on <imaging-host>
 # Then apply the configuration:
 
