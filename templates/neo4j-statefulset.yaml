@@ -22,7 +22,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - mkdir /var/lib/neo4j/import/csv;cp /opt/config/neo4j.conf /var/lib/neo4j/conf/;unzip -nq /var/lib/neo4j/plugins/packagereference.zip -d /var/lib/neo4j/import;neo4j-admin restore --verbose --from=/var/lib/neo4j/import/packagereference --database=packagereference --force --move;neo4j-admin set-initial-password imaging;neo4j console
+            - mkdir -p /var/lib/neo4j/import/csv;cp /opt/config/neo4j.conf /var/lib/neo4j/conf/;unzip -nq /var/lib/neo4j/plugins/packagereference.zip -d /var/lib/neo4j/import;neo4j-admin restore --verbose --from=/var/lib/neo4j/import/packagereference --database=packagereference --force --move;neo4j-admin set-initial-password imaging;neo4j console
           env:
             - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
               value: "yes"
