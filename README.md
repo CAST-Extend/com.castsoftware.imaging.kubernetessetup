@@ -24,7 +24,7 @@ Create Imaging storage
 # A sample storage configuration is provided in ClusterStorage-local.yaml.
 # IMPORTANT NOTE: this storage configuration is based on Persistent Volumes of type "local".
 #                 As "local" Persistent Volumes are by nature attached to a specific node, Imaging pods
-#                 will always be scheduled on the node where those Persistent Volumes reside.
+#                 will always be scheduled to run on the node where those Persistent Volumes reside.
 #                 This is provided as an example and for testing purposes only.
 #                 Make sure to customize this configuration and use the type of Persistent Volume
 #                 that is suitable for you.
