@@ -21,12 +21,18 @@ kubectl create ns imaging
 
 Create Imaging storage
 ```
-# A sample implementation based on local Persistent Volumes is provided in ClusterStorage-local.yaml.
-# Before using it, edit the file to:
+# A sample storage configuration is provided in ClusterStorage-local.yaml.
+# IMPORTANT NOTE: this storage configuration is based on Persistent Volumes of type "local".
+#                 As "local" Persistent Volumes are by nature attached to a specific node, Imaging pods
+#                 will always be scheduled on the node where those Persistent Volumes reside.
+#                 This is provided as an example and for testing purposes only.
+#                 Make sure to customize this Persistent Volumes configuration to use the type of 
+#                 Persistent Volume that is suitable for you.
+# Edit this file before applying it:
 #  -> specify the host name of the node on which the local Persistent Volumes will be created
-#     (replace <imaging-host> in each Persistent Volume)
+#     (replace <imaging-host> in each 3 Persistent Volumes)
 #  -> adjust the physical path of each Persistent Volume to match local folders on <imaging-host>
-# Apply the configuration:
+# Then apply the configuration:
 
 kubectl apply -f ClusterStorage-local.yaml
 
