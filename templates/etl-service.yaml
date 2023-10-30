@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: etl
+  labels:
+    app: etl
+spec:
+  ports:
+  - name: http
+    port: 9001
+    targetPort: 9001
+  selector:
+    app: etl
+  type: NodePort

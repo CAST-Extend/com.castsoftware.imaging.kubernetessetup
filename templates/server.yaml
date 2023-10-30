@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: server
+    version: {{.Values.serviceImage.tag| default .Values.version}}
+  name: server
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.serverReplicaCount }}
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      initContainers:
+        - name: neo4jhealthcheck
+          image: busybox:latest
+          command: ['sh', '-c', "until wget --no-verbose --spider http://neo4j.{{ .Release.Namespace }}.svc.cluster.local:7474; do echo waiting for neo4j; sleep 2; done"]     
+      containers:
+        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag}}"
+          imagePullPolicy: "{{ .Values.serviceImage.pullPolicy }}"
+          command:
+            - /bin/sh
+            - -c
+            - cp /opt/imaging/config/app-config.json /opt/imaging/imaging-service/;cp /opt/imaging/config/app.config /opt/imaging/imaging-service/;supervisord -c /etc/supervisor.conf
+          name: server
+          env:
+            - name: server.port
+              value: "8084"
+            - name: SERVER_PORT
+              value: "9980"
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+            - containerPort: 8083
+              protocol: TCP
+            - containerPort: 8084
+              protocol: TCP
+            - containerPort: 9980
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          resources:
+            {{- toYaml .Values.serviceresources | nindent 12 }}
+          volumeMounts:
+            - name: config
+              mountPath: /opt/imaging/config
+            - name: login
+              mountPath: /opt/imaging/login/application.properties
+              subPath: application.properties
+            - name: loginsecurity
+              mountPath: /opt/imaging/login/security
+
+            - name: nginxmime
+              mountPath: /etc/nginx/mime.types
+              subPath: mime.types
+            - name: nginx
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: nginxproxy
+              mountPath: /etc/nginx/proxy.conf
+              subPath: proxy.conf
+
+            - name: sourcecode
+              mountPath: /opt/imaging/sourcecode/application.properties
+              subPath: application.properties
+            - name: datadir
+              mountPath: /opt/imaging/imaging-service/upload
+              readOnly: false
+            - name: logdir
+              mountPath: /opt/imaging/imaging-service/logs
+              readOnly: false
+
+      volumes:
+        - name: config
+          configMap:
+            name: serverconf
+        - name: login
+          configMap:
+            name: loginconf
+            defaultMode: 0755
+        - name: loginsecurity
+          configMap:
+            name: loginsecurityconf
+
+        - name: nginxmime
+          configMap:
+            name: nginxmimeconf
+        - name: nginx
+          configMap:
+            name: nginxconf
+        - name: nginxproxy
+          configMap:
+            name: nginxproxyconf
+            
+        - name: sourcecode
+          configMap:
+            name: sourcecodeconf
+        - name: datadir
+          persistentVolumeClaim:
+            claimName: importdir-neo4j-core-0
+        - name: logdir
+          persistentVolumeClaim:
+            claimName: logdir-neo4j-core-0
