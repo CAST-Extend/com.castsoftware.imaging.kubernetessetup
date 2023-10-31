@@ -17,8 +17,6 @@ idprop,propnam
 140847,CAST_RabbitMQ_Queue.exchangeType
 140848,CAST_RabbitMQ_Queue.bindingKey
 140849,CAST_RabbitMQ_Queue.queueName
-140900,CAST_EL_Expression.expression
-140900,CAST_EL_Expression.expression
 140917,CAST_CallToJavaProgram.javaClassFullName
 140918,CAST_CallToProgram.programName
 140955,CAST_IBM_MQ_Publisher.queueName
@@ -27,3 +25,8 @@ idprop,propnam
 140958,CAST_IBM_MQ_Subscriber.topics
 140959,CAST_IBM_MQ_Publisher.queueManagerName
 140960,CAST_IBM_MQ_Subscriber.queueManagerName
+141058,CAST_AWS_SQS_Sender.queueName
+141059,CAST_AWS_SQS_Receiver.queueName
+141243,CAST_WebService_Operation.framework
+1020146,CAST_AWS_Lambda.s3_events
+1020920,CAST_AWS_Lambda.dynamodb_events

@@ -19,29 +19,40 @@ kubectl create ns imaging
 
 ```
 
-Run below helm commands to install imaging
+Create Imaging storage
 ```
-helm install imaging --namespace imaging --set version=2.5.0 .
+# A sample storage configuration is provided in ClusterStorage-local.yaml.
+# Edit this file before applying it:
+#  -> specify the host name of the node on which the local Persistent Volumes will be created
+#     (replace <imaging-host> in each 3 Persistent Volume specification)
+#  -> adjust the physical path of each Persistent Volume to match local folders on <imaging-host>
+# IMPORTANT NOTE: this storage configuration is based on Persistent Volumes of type "local".
+#                 As "local" Persistent Volumes are by nature attached to a specific node, Imaging pods
+#                 will always be scheduled to run on the node where those Persistent Volumes reside.
+#                 This is provided as an example and for testing purposes.
+#                 For production, customize this configuration and use the type of Persistent Volume
+#                 that is suitable for you.
+# To apply the configuration:
 
+kubectl apply -f ClusterStorage-local.yaml
 
-#Update service image
-helm upgrade imaging --namespace imaging --set serviceImage.tag=<some-version>  .
+# Check Persistent Volumes status:
 
-#Update etl image
-helm upgrade imaging --namespace imaging --set etlImage.tag=<some-version> .
+kubectl get pv
 
-#Update neo4j image
-helm upgrade imaging --namespace imaging --set neo4jImage.tag=<some-version> .
+```
 
-#Get pods and service in kubernetes 
+Run below helm command to install imaging
+```
+helm install imaging --namespace imaging --set version=2.18.0 .
+
+# Get imaging pods status in kubernetes:
+
 kubectl get pods -n imaging
 
-kubectl get svc -n imaging
+# Once neo4j's pod status is "Running", run below shell script:
 
-# expose the deployment to access from outside
-kubectl expose deployment server --name=loadbalancer --port=80 --target-port=80 --type=LoadBalancer -n imaging
+./CopyCsvFiles.sh 
 
-
-# Below command will copy the some default files into neo4j data dirctory which will be needed for import an applicaiton
-k cp tools/csv/* neo4j-core-0:/var/lib/neo4j/import -n imaging
+# Once all pods' status is "Running", you can access Imaging with http://<imaging-host>:30083
 ```

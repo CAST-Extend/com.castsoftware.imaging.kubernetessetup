@@ -16,13 +16,17 @@ spec:
       labels:
         app: server
     spec:
+      initContainers:
+        - name: neo4jhealthcheck
+          image: busybox:latest
+          command: ['sh', '-c', "until wget --no-verbose --spider http://neo4j.{{ .Release.Namespace }}.svc.cluster.local:7474; do echo waiting for neo4j; sleep 2; done"]     
       containers:
-        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag | default .Values.version }}"
+        - image: "{{ .Values.serviceImage.name }}:{{ .Values.serviceImage.tag}}"
           imagePullPolicy: "{{ .Values.serviceImage.pullPolicy }}"
           command:
             - /bin/sh
             - -c
-            - cp /opt/imaging/config/nginx/* /etc/nginx/;cp /opt/imaging/config/app-config.json /opt/imaging/imaging-service/;cp /opt/imaging/config/app.config /opt/imaging/imaging-service/;supervisord -c /etc/supervisor.conf
+            - cp /opt/imaging/config/app-config.json /opt/imaging/imaging-service/;cp /opt/imaging/config/app.config /opt/imaging/imaging-service/;supervisord -c /etc/supervisor.conf
           name: server
           env:
             - name: server.port
@@ -32,7 +36,7 @@ spec:
           ports:
             - containerPort: 9000
               protocol: TCP
-            - containerPort: 80
+            - containerPort: 8083
               protocol: TCP
             - containerPort: 8084
               protocol: TCP
@@ -42,13 +46,13 @@ spec:
             httpGet:
               path: /healthcheck
               port: 9000
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
             periodSeconds: 15
           livenessProbe:
             httpGet:
               path: /healthcheck
               port: 9000
-            initialDelaySeconds: 3
+            initialDelaySeconds: 30
             periodSeconds: 15
           resources:
             {{- toYaml .Values.serviceresources | nindent 12 }}
@@ -60,8 +64,17 @@ spec:
               subPath: application.properties
             - name: loginsecurity
               mountPath: /opt/imaging/login/security
+
+            - name: nginxmime
+              mountPath: /etc/nginx/mime.types
+              subPath: mime.types
             - name: nginx
-              mountPath: /opt/imaging/config/nginx
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: nginxproxy
+              mountPath: /etc/nginx/proxy.conf
+              subPath: proxy.conf
+
             - name: sourcecode
               mountPath: /opt/imaging/sourcecode/application.properties
               subPath: application.properties
@@ -83,9 +96,17 @@ spec:
         - name: loginsecurity
           configMap:
             name: loginsecurityconf
+
+        - name: nginxmime
+          configMap:
+            name: nginxmimeconf
         - name: nginx
           configMap:
             name: nginxconf
+        - name: nginxproxy
+          configMap:
+            name: nginxproxyconf
+            
         - name: sourcecode
           configMap:
             name: sourcecodeconf

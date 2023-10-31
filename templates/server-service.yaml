@@ -8,8 +8,12 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 80
-      targetPort: 80
+      port: 8083
+      targetPort: 8083
+      nodePort: {{.Values.serverservice.port}}
+    - name: login
+      port: 8084
+      targetPort: 8084  
   selector:
     app: server
   type: NodePort

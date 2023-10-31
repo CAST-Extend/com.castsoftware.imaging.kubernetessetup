@@ -1,0 +1,815 @@
+[
+    {
+        "name": "How can I help you today",
+        "id": 1202105,
+        "category": "START",
+        "rationales": {
+            "Agnostic": ""
+        },
+        "remediations": {
+            "Agnostic": "I'd like to"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [],
+        "children": [
+            1202107,
+            1202111,
+            1202135,
+            1202137,
+            1202170
+        ]
+    },
+    {
+        "name": "Move to the Cloud",
+        "id": 1202161,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Start from"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202171
+        ],
+        "children": [
+            1202162,
+            1202163,
+            1202164,
+            1202165
+        ]
+    },
+    {
+        "name": "Make changes",
+        "id": 1202107,
+        "category": "BRANCHING-STEP",
+        "rationales": {
+            "Agnostic": ""
+        },
+        "remediations": {
+            "Agnostic": "Type of Change"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202105
+        ],
+        "children": [
+            1202108,
+            1202171
+        ]
+    },
+    {
+        "name": "Resolve an identified bug",
+        "id": 1202136,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Investigate"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202135
+        ],
+        "children": [
+            1202129,
+            1202154,
+            1202158
+        ]
+    },
+    {
+        "name": "Application modularity ",
+        "id": 1202120,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Learn about"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111
+        ],
+        "children": [
+            1202122,
+            1202123,
+            1202124
+        ]
+    },
+    {
+        "name": "Data",
+        "id": 1202125,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Learn about"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111
+        ],
+        "children": [
+            1202126,
+            1202127,
+            1202128
+        ]
+    },
+    {
+        "name": "Module",
+        "id": 1202109,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Module Name"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202108
+        ],
+        "children": [
+            1202110
+        ]
+    },
+    {
+        "name": "Element",
+        "id": 1202154,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Element name"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202108,
+            1202136
+        ],
+        "children": [
+            1202155
+        ]
+    },
+    {
+        "name": "Debug",
+        "id": 1202135,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Need to"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202105
+        ],
+        "children": [
+            1202136
+        ]
+    },
+    {
+        "name": "Modernize",
+        "id": 1202170,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202105
+        ],
+        "children": [
+            1202171
+        ]
+    },
+    {
+        "name": "Service",
+        "id": 1202158,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Select service name"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202108,
+            1202136
+        ],
+        "children": [
+            1202159
+        ]
+    },
+    {
+        "name": "Minor changes",
+        "id": 1202108,
+        "category": "BRANCHING-STEP",
+        "rationales": {
+            "Agnostic": "Corrective or evolutive maintenance"
+        },
+        "remediations": {
+            "Agnostic": "Start from"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202107
+        ],
+        "children": [
+            1202109,
+            1202154,
+            1202158
+        ]
+    },
+    {
+        "name": "Technologies and frameworks",
+        "id": 1202112,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Learn about"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202160
+        ],
+        "children": [
+            1202113,
+            1202114,
+            1202115
+        ]
+    },
+    {
+        "name": "Discover",
+        "id": 1202111,
+        "category": "BRANCHING-STEP",
+        "rationales": {
+            "Agnostic": ""
+        },
+        "remediations": {
+            "Agnostic": "Start from"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202105
+        ],
+        "children": [
+            1202116,
+            1202120,
+            1202125,
+            1202129,
+            1202131,
+            1202160
+        ]
+    },
+    {
+        "name": "Database migration",
+        "id": 1202167,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202166
+        ],
+        "children": [
+            1202168
+        ]
+    },
+    {
+        "name": "Module",
+        "id": 1202129,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Module Name"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111,
+            1202136
+        ],
+        "children": [
+            1202130
+        ]
+    },
+    {
+        "name": "Enrich",
+        "id": 1202137,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Choose your action"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202105
+        ],
+        "children": []
+    },
+    {
+        "name": "APIs Inventory",
+        "id": 1202116,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Learn about"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111
+        ],
+        "children": [
+            1202117,
+            1202118,
+            1202119
+        ]
+    },
+    {
+        "name": "Architecture focus",
+        "id": 1202160,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Choose a level"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111
+        ],
+        "children": [
+            1202106,
+            1202112,
+            1202134
+        ]
+    },
+    {
+        "name": "Upgrade/Replace component",
+        "id": 1202166,
+        "category": "BRANCHING-STEP",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": "Start from"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202171
+        ],
+        "children": [
+            1202167,
+            1202169
+        ]
+    },
+    {
+        "name": "Major changes",
+        "id": 1202171,
+        "category": "BRANCHING-STEP",
+        "rationales": {
+            "Agnostic": "Modernization"
+        },
+        "remediations": {
+            "Agnostic": "What type of action you intend to do?"
+        },
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202107,
+            1202170
+        ],
+        "children": [
+            1202161,
+            1202166
+        ]
+    },
+    {
+        "name": "Private APIs",
+        "id": 1202118,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Investigate into call graph for an API and explore its linked objects.\n- Identify and tag the APIs to to facilitate data exchange between different internal systems.\n- Right click on API node, under Graph Navigation > Get Start and End points connected to API.\n- Right click on API node, under Graph Navigation > Get Call Hierarchy based on callers or callees\n- Right click on API node, under Graph Navigation > Find Path connected to a target object.\n- Save the view or export details for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202116
+        ],
+        "children": []
+    },
+    {
+        "name": "List of modules",
+        "id": 1202130,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Drill down on nodes to access elements corresponding to the identified bug.\n- Enable Insights from the right panel to identify impacted objects belonging to a module.\n- Save the view with all objects belonging to a module.\n- Annotate or Tag the objects of your interest.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202129
+        ],
+        "children": []
+    },
+    {
+        "name": "All application APIs",
+        "id": 1202117,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Fetch list of APIs based on access type (Get/Post/Put/Delete).\n- Fetch list of APIs based on type such as (Public/Private).\n- Investigate into call graph for an API based on its callees.\n- Identify and tag the APIs to leverage existing functionalities and services.\n- Save the view or export details for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202116
+        ],
+        "children": []
+    },
+    {
+        "name": "Open Source component",
+        "id": 1202169,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n-Look at the adherence of your open source component with rest of the application \n-identify if CVEs exists and sort by criticality \n-identify the oldest components and prepare upgrade with test to done on application used by the open source component",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202166
+        ],
+        "children": []
+    },
+    {
+        "name": "Complete technology stack with frameworks",
+        "id": 1202114,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about all the technology object types used in your application.\n- Learn about all the external frameworks used in your application.\n- See the references that exists between them.\n- Drill down on object types to see in details.\n- Drill down on references to see in details.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202112
+        ],
+        "children": []
+    },
+    {
+        "name": "Services architecture",
+        "id": 1202124,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the services identified for your application. \n- Drill down on links to visualize the references between objects belonging to different services.\n- Drill down on services to see all its associated objects.\n- Save the view with all objects belonging to a service.\n- Annotate or Tag the objects of your interest.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202120
+        ],
+        "children": []
+    },
+    {
+        "name": "Dependencies with other applications",
+        "id": 1202131,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Select a node and access properties in the right panel to obtain information about the application node.\n- Drill down on application nodes to view objects belonging to an application.\n- Drill down on the references to visualize the dependencies between application objects.\n- Annotate, tag or insert text to collaborate on any dependencies.\n- Save the view for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202111
+        ],
+        "children": []
+    },
+    {
+        "name": "Data Manipulation elements",
+        "id": 1202126,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the data manipulation objects identified for your application. \n- Drill down on links to visualize the references between objects.\n- Select an object to view its properties in the right panel, identify the transactions it is involved.\n- Annotate or Tag the objects of your interest.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202125
+        ],
+        "children": []
+    },
+    {
+        "name": "List of Service",
+        "id": 1202159,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Drill down on nodes to access elements corresponding to the minor changes.\n- Select the object intended to change and view the object properties in the right panel.\n- Add linked objects to assess all the impacted dependencies.\n- Highlight all the callers or callees for the object to focus on investigating dependencies. \n- You can also get detailed explanation to any object by enabling ChatGPT feature.\n- Annotate or tag the objects to be tested for the impact of change.\n- Save the view or export details for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202158
+        ],
+        "children": []
+    },
+    {
+        "name": "Containairization visibility",
+        "id": 1202164,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202161
+        ],
+        "children": []
+    },
+    {
+        "name": "Public APIs",
+        "id": 1202119,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Investigate into call graph for an API and explore its linked objects.\n- Identify and tag the APIs to to facilitate data exchange between different internal systems.\n- Right click on API node, under Graph Navigation > Get Start and End points connected to API.\n- Right click on API node, under Graph Navigation > Get Call Hierarchy based on callers or callees\n- Right click on API node, under Graph Navigation > Find Path connected to a target object.\n- Save the view or export details for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202116
+        ],
+        "children": []
+    },
+    {
+        "name": "Component diagram",
+        "id": 1202106,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the various architectural levels.\n- Select a node and access properties in the right panel to obtain information about the objects corresponding to each layer node.\n- Drill down on the view to learn more about the technologies and frameworks discovered.\n- Enable insights to identify any flaws or blockers staring from the architectural level.\n- Annotate, tag or insert text to collaborate on any architectural changes.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202160
+        ],
+        "children": []
+    },
+    {
+        "name": "Oracle",
+        "id": 1202165,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202161
+        ],
+        "children": []
+    },
+    {
+        "name": "Class inheritance overview",
+        "id": 1202122,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the inheritance relationships that exists for your application.\n- Right click on a class node and highlight Callers to understand its relations.\n- Drill down on classes to see all its associated objects.\n- Annotate or Tag the objects of your interest and save the view.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202120
+        ],
+        "children": []
+    },
+    {
+        "name": "Cloud-ready visibility",
+        "id": 1202163,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202161
+        ],
+        "children": []
+    },
+    {
+        "name": "Container diagram",
+        "id": 1202134,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the various architectural levels.\n- Select a node and access properties in the right panel to obtain information about the objects corresponding to each layer node.\n- Drill down on the view to learn more about the technologies and frameworks discovered.\n- Enable insights to identify any flaws or blockers staring from the architectural level.\n- Annotate, tag or insert text to collaborate on any architectural changes.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202160
+        ],
+        "children": []
+    },
+    {
+        "name": "Search for elements by name",
+        "id": 1202155,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Select the element which contains a bug by name\n- Use Filter by panel to help you identify your element\n- Investigate in source code\n- Add linked objects to assess all the impacted dependencies.\n- Identify Web pages impacted or Tables impacted using the Get Start/End point feature",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202154
+        ],
+        "children": []
+    },
+    {
+        "name": "AWS",
+        "id": 1202162,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202161
+        ],
+        "children": []
+    },
+    {
+        "name": "Application adherence to third party components",
+        "id": 1202113,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": ""
+        },
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the adherence of the application to external components.\n- Drill down into references to know more about connected objects.\n- Mark external dependencies for an upgrade by annotating them and save the view for reference.\n- Get insights on open source safety and identify external components with CVEs.\n- Export this information to share with your team members for planning upgrades.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202112
+        ],
+        "children": []
+    },
+    {
+        "name": "Project structure",
+        "id": 1202123,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the orchestration of projects that exists for your application.\n- Drill down on projects to see all its associated objects.\n- Drill down on links to visualize references between objects belonging to different projects.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202120
+        ],
+        "children": []
+    },
+    {
+        "name": "Data storage elements",
+        "id": 1202127,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Learn about the data storage objects identified for your application. \n- Drill down on links to visualize the references between the objects.\n- Select an object to view its properties in the right panel, identify the transactions it is involved.\n- Annotate or Tag the objects of your interest.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202125
+        ],
+        "children": []
+    },
+    {
+        "name": "Database structure",
+        "id": 1202128,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Hover on the references to identify foreign key references\n- Drill down on object nodes to view column details, including primary ley details.\n- Select an object to view its properties in the right panel, identify the transactions it is involved.\n- Annotate or Tag the objects of your interest.\n- Right click on a node and add linked objects to the view its linked objects on the application.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202125
+        ],
+        "children": []
+    },
+    {
+        "name": "Move to Oracle Cloud",
+        "id": 1202168,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202167
+        ],
+        "children": []
+    },
+    {
+        "name": "List of modules",
+        "id": 1202110,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {
+            "Agnostic": ""
+        },
+        "populations": {},
+        "description": "Action Tips:\n- Drill down on nodes to access elements corresponding to the minor changes.\n- Select the object intended to change and view the object properties in the right panel.\n- Add linked objects to assess all the impacted dependencies.\n- Highlight all the callers or callees for the object to focus on investigating dependencies. \n- You can also get detailed explanation to any object by enabling ChatGPT feature.\n- Annotate or tag the objects to be tested for the impact of change.\n- Save the view or export details for reference.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202109
+        ],
+        "children": []
+    },
+    {
+        "name": "Third-Party components",
+        "id": 1202115,
+        "category": "TASK",
+        "rationales": {},
+        "remediations": {},
+        "populations": {},
+        "description": "Action Tips:\n- Identify all the third party components and their versions used in the application.\n- Identify the outdated versions used based on gap and release date.\n- Identify the safer and closest version to upgrade.\n- See the application objects referencing to these third party components.\n- Investigate into details of references to know more about connected objects and assess the impact of upgrade.",
+        "impacts": [],
+        "effort": null,
+        "parents": [
+            1202112
+        ],
+        "children": []
+    }
+]

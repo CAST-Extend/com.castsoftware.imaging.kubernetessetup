@@ -15,14 +15,14 @@ data:
     dbms.directories.data=/var/lib/neo4j/data
     #dbms.directories.plugins=plugins
     dbms.directories.certificates=certificates
-    dbms.directories.logs=logs
+    dbms.directories.logs=/var/lib/neo4j/logs
     dbms.directories.lib=lib
     #dbms.directories.run=run
 
     # This setting constrains all `LOAD CSV` import files to be under the `import` directory. Remove or comment it out to
     # allow files to be loaded from anywhere in the filesystem; this introduces possible security problems. See the
     # `LOAD CSV` section of the manual for details.
-    dbms.directories.import=/var/lib/neo4j/import
+    dbms.directories.import=/var/lib/neo4j/import/csv
 
     # Whether requests to Neo4j are authenticated.
     # To disable authentication, uncomment this line
@@ -35,8 +35,8 @@ data:
     # calculated based on available system resources.
     # Uncomment these lines to set specific initial and maximum
     # heap size.
-    dbms.memory.heap.initial_size=3G
-    dbms.memory.heap.max_size=3G
+    dbms.memory.heap.initial_size=8G
+    dbms.memory.heap.max_size=8G
 
     # The amount of memory to use for mapping the store files, in bytes (or
     # kilobytes with the 'k' suffix, megabytes with 'm' and gigabytes with 'g').
@@ -221,6 +221,7 @@ data:
     # Miscellaneous configuration
     #*****************************************************************
 
+    cypher.lenient_create_relationship=true
     # Enable this to specify a parser other than the default one.
     #cypher.default_language_version=3.0
 
@@ -230,7 +231,9 @@ data:
     #dbms.security.allow_csv_import_from_file_urls=true
 
     # Retention policy for transaction logs needed to perform recovery and backups.
-    dbms.tx_log.rotation.retention_policy=1 days
+    dbms.tx_log.rotation.retention_policy=10 files
+    dbms.tx_log.rotation.size=250M
+    db.checkpoint.interval.time=5M
 
     # Enable a remote shell server which Neo4j Shell clients can log in to.
     #dbms.shell.enabled=true
@@ -319,7 +322,7 @@ data:
     # Other Neo4j system properties
     #********************************************************************
     dbms.jvm.additional=-Dunsupported.dbms.udc.source=tarball
-    dbms.security.procedures.unrestricted=apoc.*
+    dbms.security.procedures.unrestricted=apoc.*,gds.*
     apoc.import.file.enabled=true
     apoc.export.file.enabled=true
     metrics.enabled=false
@@ -328,12 +331,17 @@ data:
 
     #dbms.memory.pagecache.size=512M
 
-    #dbms.tx_log.rotation.retention_policy=100M size
-    dbms.directories.plugins=/plugins
-    dbms.directories.logs=/logs
+
+    dbms.directories.plugins=/var/lib/neo4j/plugins
+    #dbms.directories.logs=/logs
     #causal_clustering.transaction_advertised_address=e040af5dd0f4:6000
     #causal_clustering.raft_advertised_address=e040af5dd0f4:7000
     #causal_clustering.discovery_advertised_address=e040af5dd0f4:5000
+    dbms.import.csv.buffer_size=10000000
+    dbms.jvm.additional=-Dlog4j2.disable.jmx=true
+
+    #NEO4j threads configuration will be added at the runtime of setup
+
 kind: ConfigMap
 metadata:
   name: neo4jconfig
