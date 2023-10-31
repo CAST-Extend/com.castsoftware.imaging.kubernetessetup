@@ -44,7 +44,7 @@ kubectl get pv
 
 Run below helm command to install imaging
 ```
-helm install imaging --namespace imaging --set version=2.18.0 .
+helm install imaging --namespace imaging --set version=2.18.1-31 .
 
 # Get imaging pods status in kubernetes:
 
