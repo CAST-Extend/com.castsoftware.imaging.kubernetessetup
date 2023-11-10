@@ -33,8 +33,6 @@ spec:
               name: bolt
             - containerPort: 6362
               name: backup
-          securityContext:
-            privileged: true
           volumeMounts:
             - name: datadir
               mountPath: "/data"
